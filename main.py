@@ -1,5 +1,3 @@
-import re
-
 import speech_recognition as sr
 import g4f
 import concurrent.futures
