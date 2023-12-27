@@ -15,6 +15,15 @@ def ask_gpt(prompt: str) -> str:
     return response
 
 
+def text_to_voice(text, language='ru'):
+    tts = gTTS(text=text, lang=language, slow=False)
+
+
+    tts.save("output.mp3")
+
+
+    # os.system("start output.mp3")
+
 
 def process_audio():
     selected_index = 0
