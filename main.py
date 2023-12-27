@@ -18,10 +18,10 @@ def ask_gpt(prompt: str) -> str:
 def text_to_voice(text, language='ru'):
     tts = gTTS(text=text, lang=language, slow=False)
 
-
+    # Save text as mp3
     tts.save("output.mp3")
 
-
+    # Play the mp3 file
     # os.system("start output.mp3")
 
 
@@ -37,7 +37,8 @@ def process_audio():
     try:
         print("Analyzing request")
         a = r.recognize_google(audio, language='ru-RU')
-        response = ask_gpt(a)
+        answer = ask_gpt(a).replace('*', '')
+        response = answer.replace(')', '')
         print(response)
         text_to_voice(response)
     except sr.UnknownValueError:
