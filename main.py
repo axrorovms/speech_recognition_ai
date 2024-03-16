@@ -25,8 +25,7 @@ def process_audio():
 
     with selected_mic as source:
         print("Ask anything from AI")
-        # Use non-blocking asynchronous recording
-        audio = r.listen(source, timeout=5)  # Adjust timeout as needed
+        audio = r.listen(source, timeout=5) 
 
     try:
         print("Analyzing request")
@@ -34,7 +33,6 @@ def process_audio():
         answer = ask_gpt(a).replace('*', '').replace(')', '')
         print(answer)
         text_to_voice(answer)
-        os.system("start output.mp3")  # Play the generated audio
     except sr.UnknownValueError:
         print('Speech could not be understood..\n Please try again(')
     except sr.RequestError as e:
